@@ -1,0 +1,101 @@
+/* Stilizare pentru întregul corp al paginii */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffe6e6; /* Fundal roz pal */
+    color: #333; /* Text gri închis */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container principal */
+.container {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Titlul paginii */
+h1 {
+    color: #e60073; /* Roz intens */
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* Cutia scrisorii */
+.letter-box {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border: 2px solid #e60073;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Paragrafele din scrisoare */
+.letter-box p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+/* Stilizarea textului îngroșat */
+.letter-box strong {
+    color: #e60073; /* Roz intens */
+}
+
+/* Butonul "Go back" */
+.back-button {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #e60073;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.back-button:hover {
+    color: #cc005f;
+}
+
+/* Butonul "Generate QR" */
+.qr-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #e60073;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.qr-button:hover {
+    background-color: #cc005f;
+}
+
+/* Container pentru codul QR */
+#qr-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Ascunde secțiunea QR înainte de afișare */
+#qr-container.hidden {
+    display: none;
+}
+
+/* Canvas-ul pentru codul QR */
+#qr-code {
+    margin-top: 10px;
+    border: 2px solid #e60073; /* Graniță roz intens */
+    padding: 10px;
+    border-radius: 5px;
+}

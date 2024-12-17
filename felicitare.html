@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <link rel="stylesheet" href="felicitare.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Your Love Letter</h1>
+
+        <div id="letter-content" class="letter-box">
+            <p><strong>Dear <span id="recipientName"></span>,</strong></p>
+            <p id="loveLetterText"></p>
+            <p><strong>With love,</strong></p>
+            <p id="senderNameText"></p>
+        </div>
+
+        <a href="initializareFelicitare.html" class="back-button">Go back to send another letter</a>
+        <button id="generateQR" class="qr-button">Generate QR</button>
+
+        <div id="qr-container" class="hidden">
+            <h2>Your QR Code:</h2>
+            <canvas id="qr-code"></canvas>
+        </div>
+    </div>
+
+    <!-- Script pentru generare QR și salvare imagine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+    <script>
+        window.onload = function () {
+            const loveLetterData = JSON.parse(localStorage.getItem('loveLetterData'));
+
+            if (loveLetterData) {
+                document.getElementById('recipientName').textContent = loveLetterData.recipientEmail;
+                document.getElementById('loveLetterText').textContent = loveLetterData.loveLetter;
+                document.getElementById('senderNameText').textContent = loveLetterData.senderName || 'Anonymous';
+            }
+        };
+
+        document.getElementById('generateQR').addEventListener('click', () => {
+            const letterContent = document.getElementById('letter-content');
+            
+            // 1. Salvăm scrisoarea ca imagine
+            html2canvas(letterContent).then(canvas => {
+                const imageData = canvas.toDataURL('image/png');
+
+                // 2. Salvăm imaginea în directorul curent
+                const link = document.createElement('a');
+                link.href = imageData;
+                link.download = 'love_letter.png';
+                link.click();
+
+                // 3. Generăm codul QR care duce la imagine
+                const qrContainer = document.getElementById('qr-container');
+                const qrCodeCanvas = document.getElementById('qr-code');
+                QRCode.toCanvas(qrCodeCanvas, 'love_letter.png', { width: 200 }, (error) => {
+                    if (error) console.error(error);
+                    qrContainer.classList.remove('hidden');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
