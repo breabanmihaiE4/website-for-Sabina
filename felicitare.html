@@ -50,13 +50,13 @@
                 // 2. Salvăm imaginea în directorul curent
                 const link = document.createElement('a');
                 link.href = imageData;
-                link.download = 'love_letter.png';
+                link.download = 'https://breabanmihaie4.github.io/website-for-Sabina/initializareFelicitare.html';
                 link.click();
 
                 // 3. Generăm codul QR care duce la imagine
                 const qrContainer = document.getElementById('qr-container');
                 const qrCodeCanvas = document.getElementById('qr-code');
-                QRCode.toCanvas(qrCodeCanvas, 'love_letter.png', { width: 200 }, (error) => {
+                QRCode.toCanvas(qrCodeCanvas, 'https://breabanmihaie4.github.io/website-for-Sabina/initializareFelicitare.html', { width: 200 }, (error) => {
                     if (error) console.error(error);
                     qrContainer.classList.remove('hidden');
                 });
